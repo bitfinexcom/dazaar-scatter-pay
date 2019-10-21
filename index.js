@@ -1,5 +1,6 @@
 const providers = [
-  require('./providers/eos')
+  require('./providers/eos'),
+  require('./providers/eos-testnet')
 ]
 
 module.exports = class DazaarScatterPay {

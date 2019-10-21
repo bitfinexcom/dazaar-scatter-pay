@@ -9,10 +9,12 @@ const { TextEncoder, TextDecoder } = require('util')
 ScatterJS.plugins(new ScatterEOS())
 
 module.exports = class DazaarEOSPay {
-  constructor (pay, seller) {
+  constructor (pay, seller, opts = {}) {
     this.payment = pay
     this.name = 'EOS'
     this.seller = seller
+    this.chainId = opts.chainId || 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+    this.rpc = opts.rpc || 'api.eosnewyork.io'
   }
 
   static supports (payment) {
@@ -21,15 +23,15 @@ module.exports = class DazaarEOSPay {
 
   buy (buyer, amount, cb) {
     const memo = metadata(this.seller, buyer)
-    payEOS(this.payment.payTo, amount, memo, cb)
+    payEOS(this.payment.payTo, amount, memo, this.chainId, this.rpc, cb)
   }
 }
 
-function payEOS (destination, amount, memo, cb) {
+function payEOS (destination, amount, memo, chainId, host, cb) {
   const network = ScatterJS.Network.fromJson({
     blockchain: 'eos',
-    chainId: '5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191',
-    host: 'api-kylin.eoslaomao.com',
+    chainId,
+    host,
     port: 443,
     protocol: 'https'
   })
