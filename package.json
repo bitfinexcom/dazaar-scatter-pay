@@ -1,5 +1,5 @@
 {
-  "name": "dazaar-scatter-pay",
+  "name": "@dazaar/scatter-pay",
   "version": "1.0.0",
   "description": "Pay for Dazaar feeds using Scatter",
   "main": "index.js",
@@ -16,6 +16,6 @@
   "scripts": {
     "test": "standard"
   },
-  "author": "Bitfinex",
+  "author": "Dazaar Limited",
   "license": "MIT"
 }
