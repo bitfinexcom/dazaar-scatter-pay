@@ -1,6 +1,6 @@
 {
   "name": "dazaar-scatter-pay",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Pay for Dazaar feeds using Scatter",
   "main": "index.js",
   "dependencies": {
